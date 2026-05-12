@@ -218,7 +218,6 @@
         "skills/agent-sort",
         "skills/agent-introspection-debugging",
         "skills/ai-regression-testing",
-        "skills/configure-ecc",
         "skills/code-tour",
         "skills/continuous-learning",
         "skills/continuous-learning-v2",
@@ -230,9 +229,7 @@
         "skills/iterative-retrieval",
         "skills/plankton-code-quality",
         "skills/production-audit",
-        "skills/skill-stocktake",
         "skills/strategic-compact",
-        "skills/tdd-workflow",
         "skills/verification-loop",
         "skills/windows-desktop-e2e"
       ],
@@ -297,12 +294,7 @@
       "paths": [
         "skills/deep-research",
         "skills/exa-search",
-        "skills/research-ops",
-        "skills/scientific-db-pubmed-database",
-        "skills/scientific-db-uspto-database",
-        "skills/scientific-pkg-gget",
-        "skills/scientific-thinking-literature-review",
-        "skills/scientific-thinking-scholar-evaluation"
+        "skills/research-ops"
       ],
       "targets": [
         "claude",
@@ -356,7 +348,6 @@
         "skills/connections-optimizer",
         "skills/customer-billing-ops",
         "skills/dashboard-builder",
-        "skills/ecc-tools-cost-audit",
         "skills/finance-billing-ops",
         "skills/github-ops",
         "skills/jira-integration",
