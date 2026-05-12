@@ -127,15 +127,11 @@
         "skills/backend-patterns",
         "skills/coding-standards",
         "skills/compose-multiplatform-patterns",
-        "skills/csharp-testing",
         "skills/fsharp-testing",
-        "skills/cpp-coding-standards",
-        "skills/cpp-testing",
         "skills/dart-flutter-patterns",
         "skills/django-patterns",
         "skills/django-tdd",
         "skills/django-verification",
-        "skills/dotnet-patterns",
         "skills/fastapi-patterns",
         "skills/frontend-patterns",
         "skills/frontend-slides",
@@ -154,8 +150,6 @@
         "skills/laravel-verification",
         "skills/mcp-server-patterns",
         "skills/nestjs-patterns",
-        "skills/perl-patterns",
-        "skills/perl-testing",
         "skills/python-patterns",
         "skills/python-testing",
         "skills/quarkus-patterns",
@@ -271,7 +265,6 @@
         "skills/laravel-security",
         "skills/llm-trading-agent-security",
         "skills/nodejs-keccak256",
-        "skills/perl-security",
         "skills/quarkus-security",
         "skills/security-review",
         "skills/security-scan",
@@ -333,15 +326,8 @@
       "kind": "skills",
       "description": "Business, writing, market, and investor communication skills.",
       "paths": [
-        "skills/article-writing",
-        "skills/brand-voice",
-        "skills/content-engine",
-        "skills/investor-materials",
-        "skills/investor-outreach",
-        "skills/lead-intelligence",
         "skills/product-capability",
         "skills/social-graph-ranker",
-        "skills/seo",
         "skills/market-research"
       ],
       "targets": [
@@ -366,22 +352,17 @@
       "kind": "skills",
       "description": "Connected-app operator workflows for setup audits, billing operations, program tracking, Google Workspace, and network optimization.",
       "paths": [
-        "skills/automation-audit-ops",
         "skills/api-connector-builder",
         "skills/connections-optimizer",
         "skills/customer-billing-ops",
         "skills/dashboard-builder",
         "skills/ecc-tools-cost-audit",
-        "skills/email-ops",
         "skills/finance-billing-ops",
         "skills/github-ops",
-        "skills/google-workspace-ops",
         "skills/jira-integration",
         "skills/knowledge-ops",
-        "skills/messages-ops",
         "skills/project-flow-ops",
         "skills/terminal-ops",
-        "skills/unified-notifications-ops",
         "skills/workspace-surface-audit"
       ],
       "targets": [
@@ -406,7 +387,6 @@
       "kind": "skills",
       "description": "Social publishing and distribution skills.",
       "paths": [
-        "skills/crosspost",
         "skills/x-api"
       ],
       "targets": [
@@ -487,7 +467,6 @@
       "description": "Swift, SwiftUI, and Apple platform skills including concurrency, persistence, and design patterns.",
       "paths": [
         "skills/foundation-models-on-device",
-        "skills/liquid-glass-design",
         "skills/swift-actor-persistence",
         "skills/swift-concurrency-6-2",
         "skills/swift-protocol-di-testing",
@@ -528,9 +507,7 @@
         "skills/cost-aware-llm-pipeline",
         "skills/data-scraper-agent",
         "skills/enterprise-agent-ops",
-        "skills/nanoclaw-repl",
         "skills/prompt-optimizer",
-        "skills/ralphinho-rfc-pipeline",
         "skills/regex-vs-llm-structured-text",
         "skills/search-first",
         "skills/token-budget-advisor",
@@ -618,14 +595,7 @@
       "kind": "skills",
       "description": "Supply chain, logistics, procurement, and manufacturing domain skills.",
       "paths": [
-        "skills/carrier-relationship-management",
-        "skills/customs-trade-compliance",
-        "skills/energy-procurement",
-        "skills/inventory-demand-planning",
-        "skills/logistics-exception-management",
-        "skills/production-scheduling",
-        "skills/quality-nonconformance",
-        "skills/returns-reverse-logistics"
+        "skills/customs-trade-compliance"
       ],
       "targets": [
         "claude",
@@ -642,31 +612,6 @@
       ],
       "defaultInstall": false,
       "cost": "heavy",
-      "stability": "stable"
-    },
-    {
-      "id": "document-processing",
-      "kind": "skills",
-      "description": "Document processing, conversion, and translation skills.",
-      "paths": [
-        "skills/nutrient-document-processing",
-        "skills/visa-doc-translate"
-      ],
-      "targets": [
-        "claude",
-        "cursor",
-        "antigravity",
-        "codex",
-        "opencode",
-        "codebuddy",
-        "joycode",
-        "qwen"
-      ],
-      "dependencies": [
-        "platform-configs"
-      ],
-      "defaultInstall": false,
-      "cost": "medium",
       "stability": "stable"
     }
   ]
