@@ -369,11 +369,11 @@ test('.mcp.json has mcpServers object', () => {
   );
 });
 
-test('.mcp.json includes at least github, context7, and exa servers', () => {
+test('.mcp.json ships only the exa MCP server', () => {
   const servers = Object.keys(mcpConfig.mcpServers);
-  assert.ok(servers.includes('github'), 'Expected github MCP server');
-  assert.ok(servers.includes('context7'), 'Expected context7 MCP server');
   assert.ok(servers.includes('exa'), 'Expected exa MCP server');
+  assert.ok(!servers.includes('github'), 'github removed: duplicate of user-scope github server');
+  assert.ok(!servers.includes('context7'), 'context7 removed: duplicate of user-scope context7 server');
 });
 
 test('.mcp.json declares exa as an http MCP server', () => {
