@@ -2460,8 +2460,8 @@ async function runTests() {
 
       assert.strictEqual(preBash.length, 1, 'Should have exactly one PreToolUse Bash dispatcher');
       assert.strictEqual(postBash.length, 1, 'Should have exactly one PostToolUse Bash dispatcher');
-      assert.strictEqual(preBash[0].id, 'pre:bash:dispatcher');
-      assert.strictEqual(postBash[0].id, 'post:bash:dispatcher');
+      // Hook ids live in the run-with-flags dispatch key inside the command, not in hooks.json
+      // (Claude Code rejects unknown keys like id/description in plugin hooks.json)
 
       const preCommand = Array.isArray(preBash[0].hooks[0].command)
         ? preBash[0].hooks[0].command.join(' ')
@@ -2503,10 +2503,39 @@ async function runTests() {
             assert.strictEqual(
               typeof hook.command,
               'string',
-              `${eventName}/${entry.id || entry.matcher || 'hook'} should use string command form`,
+              `${eventName}/${entry.matcher || 'hook'} should use string command form`,
             );
           }
         }
+      }
+    })
+  )
+    passed++;
+  else failed++;
+
+  if (
+    test('hooks.json contains only Claude Code-recognized keys', () => {
+      const hooksPath = path.join(__dirname, '..', '..', 'hooks', 'hooks.json');
+      const hooks = JSON.parse(fs.readFileSync(hooksPath, 'utf8'));
+
+      const okTop = new Set(['hooks']);
+      const okEntry = new Set(['matcher', 'hooks']);
+      const okCommand = new Set(['type', 'command', 'async', 'timeout']);
+
+      for (const key of Object.keys(hooks)) {
+        assert.ok(okTop.has(key), `top-level "${key}" is not in the Claude Code plugin hooks schema (upstream sync regression?)`);
+      }
+      for (const [eventName, hookArray] of Object.entries(hooks.hooks)) {
+        hookArray.forEach((entry, i) => {
+          for (const key of Object.keys(entry)) {
+            assert.ok(okEntry.has(key), `${eventName}[${i}] "${key}" is not in the Claude Code plugin hooks schema (upstream sync regression?)`);
+          }
+          entry.hooks.forEach(hook => {
+            for (const key of Object.keys(hook)) {
+              assert.ok(okCommand.has(key), `${eventName}[${i}] command "${key}" is not in the Claude Code plugin hooks schema (upstream sync regression?)`);
+            }
+          });
+        });
       }
     })
   )

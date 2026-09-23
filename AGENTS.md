@@ -2,7 +2,7 @@
 
 This is a **production-ready AI coding plugin** providing 58 specialized agents, 217 skills, 74 commands, and automated hook workflows for software development.
 
-**Version:** 2.0.0-rc.3
+**Version:** 2.0.0-rc.4
 
 ## Core Principles
 

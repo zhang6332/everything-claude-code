@@ -1,6 +1,6 @@
 {
   "name": "ecc",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "description": "Battle-tested Claude Code plugin for engineering teams — 58 agents, 217 skills, 74 legacy command shims, production-ready hooks, and selective install workflows evolved through continuous real-world use",
   "author": {
     "name": "Affaan Mustafa",

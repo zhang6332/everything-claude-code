@@ -29,13 +29,15 @@ function test(name, fn) {
   }
 }
 
-function loadHook(id) {
+function loadHook(phase) {
+  // Match by the run-with-flags dispatch key embedded in the command —
+  // hooks.json itself carries no id metadata (Claude Code rejects unknown keys)
   const hookGroups = JSON.parse(fs.readFileSync(hooksJsonPath, 'utf8')).hooks;
   const hooks = Object.values(hookGroups).flat();
-  const hook = hooks.find(candidate => candidate.id === id);
-  assert.ok(hook, `Expected ${id} in hooks/hooks.json`);
-  assert.ok(Array.isArray(hook.hooks), `Expected ${id} to define hook commands`);
-  assert.strictEqual(hook.hooks.length, 1, `Expected ${id} to have one command`);
+  const hook = hooks.find(candidate => candidate.hooks?.[0]?.command?.includes(`run-with-flags.js ${phase} `));
+  assert.ok(hook, `Expected a hook dispatching ${phase} in hooks/hooks.json`);
+  assert.ok(Array.isArray(hook.hooks), `Expected ${phase} to define hook commands`);
+  assert.strictEqual(hook.hooks.length, 1, `Expected ${phase} to have one command`);
   return hook.hooks[0].command;
 }
 
@@ -115,13 +117,12 @@ function runTests() {
   let failed = 0;
 
   if (test('observe hooks use node-mode runner instead of shell-mode dispatch', () => {
-    for (const hookId of ['pre:observe:continuous-learning', 'post:observe:continuous-learning']) {
-      const command = loadHook(hookId);
-      const phase = hookId.startsWith('pre:') ? 'pre:observe' : 'post:observe';
+    for (const phase of ['pre:observe', 'post:observe']) {
+      const command = loadHook(phase);
 
       assert.ok(command.includes(`node scripts/hooks/run-with-flags.js ${phase} scripts/hooks/observe-runner.js standard,strict`));
-      assert.ok(!command.includes('shell scripts/hooks/run-with-flags-shell.sh'), `${hookId} should not use shell-mode bootstrap`);
-      assert.ok(!command.includes('skills/continuous-learning-v2/hooks/observe.sh'), `${hookId} should not call observe.sh directly from hooks.json`);
+      assert.ok(!command.includes('shell scripts/hooks/run-with-flags-shell.sh'), `${phase} should not use shell-mode bootstrap`);
+      assert.ok(!command.includes('skills/continuous-learning-v2/hooks/observe.sh'), `${phase} should not call observe.sh directly from hooks.json`);
     }
   })) passed++; else failed++;
 

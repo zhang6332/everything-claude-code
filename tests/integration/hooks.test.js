@@ -255,21 +255,15 @@ ${entry.evidence || 'Learned from repeated observations.'}
   fs.writeFileSync(filePath, body);
 }
 
-function getHookCommandByDescription(hooks, lifecycle, descriptionText) {
-  const hookGroup = hooks.hooks[lifecycle]?.find(
-    entry => entry.description && entry.description.includes(descriptionText)
+function getHookCommand(hooks, lifecycle, needle) {
+  // Match by script name (or run-with-flags dispatch key) embedded in the command —
+  // hooks.json itself carries no id/description (Claude Code rejects unknown keys)
+  const hookGroup = hooks.hooks[lifecycle]?.find(entry =>
+    entry.hooks?.[0]?.command?.includes(needle)
   );
 
-  assert.ok(hookGroup, `Expected ${lifecycle} hook matching "${descriptionText}"`);
-  assert.ok(hookGroup.hooks?.[0]?.command, `Expected ${lifecycle} hook command for "${descriptionText}"`);
-  return hookGroup.hooks[0].command;
-}
-
-function getHookCommandById(hooks, lifecycle, hookId) {
-  const hookGroup = hooks.hooks[lifecycle]?.find(entry => entry.id === hookId);
-
-  assert.ok(hookGroup, `Expected ${lifecycle} hook with id "${hookId}"`);
-  assert.ok(hookGroup.hooks?.[0]?.command, `Expected ${lifecycle} hook command for id "${hookId}"`);
+  assert.ok(hookGroup, `Expected ${lifecycle} hook matching "${needle}"`);
+  assert.ok(hookGroup.hooks?.[0]?.command, `Expected ${lifecycle} hook command for "${needle}"`);
   return hookGroup.hooks[0].command;
 }
 
@@ -357,7 +351,7 @@ async function runTests() {
   })) passed++; else failed++;
 
   if (await asyncTest('dev server hook transforms command to tmux session', async () => {
-    const hookCommand = getHookCommandById(hooks, 'PreToolUse', 'pre:bash:dispatcher');
+    const hookCommand = getHookCommand(hooks, 'PreToolUse', 'pre-bash-dispatcher.js');
     const result = await runHookCommand(hookCommand, {
       tool_input: { command: 'npm run dev' }
     });
@@ -543,7 +537,7 @@ async function runTests() {
   })) passed++; else failed++;
 
   if (await asyncTest('dev server hook transforms yarn dev to tmux session', async () => {
-    const hookCommand = getHookCommandById(hooks, 'PreToolUse', 'pre:bash:dispatcher');
+    const hookCommand = getHookCommand(hooks, 'PreToolUse', 'pre-bash-dispatcher.js');
     const result = await runHookCommand(hookCommand, {
       tool_input: { command: 'yarn dev' }
     });
@@ -559,11 +553,7 @@ async function runTests() {
   })) passed++; else failed++;
 
   if (await asyncTest('MCP health hook blocks unhealthy MCP tool calls through hooks.json', async () => {
-    const hookCommand = getHookCommandByDescription(
-      hooks,
-      'PreToolUse',
-      'Check MCP server health before MCP tool execution'
-    );
+    const hookCommand = getHookCommand(hooks, 'PreToolUse', 'mcp-health-check.js');
 
     const testDir = createTestDir();
     const configPath = path.join(testDir, 'claude.json');
@@ -675,7 +665,7 @@ async function runTests() {
   })) passed++; else failed++;
 
   if (await asyncTest('PostToolUse PR hook extracts PR URL', async () => {
-    const hookCommand = getHookCommandById(hooks, 'PostToolUse', 'post:bash:dispatcher');
+    const hookCommand = getHookCommand(hooks, 'PostToolUse', 'post-bash-dispatcher.js');
     const result = await runHookCommand(hookCommand, {
       tool_input: { command: 'gh pr create --title "Test"' },
       tool_output: { output: 'Creating pull request...\nhttps://github.com/owner/repo/pull/123' }
