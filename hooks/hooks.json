@@ -45,7 +45,8 @@
           {
             "type": "command",
             "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js pre:governance-capture scripts/hooks/governance-capture.js standard,strict",
-            "timeout": 10
+            "timeout": 10,
+            "async": true
           }
         ]
       },
@@ -64,7 +65,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js pre:mcp-health-check scripts/hooks/mcp-health-check.js standard,strict"
+            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js pre:mcp-health-check scripts/hooks/mcp-health-check.js standard,strict",
+            "async": true,
+            "timeout": 10
           }
         ]
       },
@@ -139,7 +142,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:edit:accumulate scripts/hooks/post-edit-accumulator.js standard,strict"
+            "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:edit:accumulate scripts/hooks/post-edit-accumulator.js standard,strict",
+            "async": true,
+            "timeout": 10
           }
         ]
       },
@@ -158,7 +163,8 @@
           {
             "type": "command",
             "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:governance-capture scripts/hooks/governance-capture.js standard,strict",
-            "timeout": 10
+            "timeout": 10,
+            "async": true
           }
         ]
       },
@@ -168,7 +174,8 @@
           {
             "type": "command",
             "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:session-activity-tracker scripts/hooks/session-activity-tracker.js standard,strict",
-            "timeout": 10
+            "timeout": 10,
+            "async": true
           }
         ]
       },
@@ -189,7 +196,8 @@
           {
             "type": "command",
             "command": "node -e \"const p=require('path');const r=(()=>{var e=process.env.CLAUDE_PLUGIN_ROOT;if(e&&e.trim())return e.trim();var p=require('path'),f=require('fs'),h=require('os').homedir(),d=p.join(h,'.claude'),q=p.join('scripts','lib','utils.js');if(f.existsSync(p.join(d,q)))return d;for(var s of [[\\\"ecc\\\"],[\\\"ecc@ecc\\\"],[\\\"marketplaces\\\",\\\"ecc\\\"],[\\\"everything-claude-code\\\"],[\\\"everything-claude-code@everything-claude-code\\\"],[\\\"marketplaces\\\",\\\"everything-claude-code\\\"]]){var l=p.join(d,'plugins',...s);if(f.existsSync(p.join(l,q)))return l}try{for(var g of [\\\"ecc\\\",\\\"everything-claude-code\\\"]){var b=p.join(d,'plugins','cache',g);for(var o of f.readdirSync(b,{withFileTypes:true})){if(!o.isDirectory())continue;for(var v of f.readdirSync(p.join(b,o.name),{withFileTypes:true})){if(!v.isDirectory())continue;var c=p.join(b,o.name,v.name);if(f.existsSync(p.join(c,q)))return c}}}}catch(x){}return d})();const s=p.join(r,'scripts/hooks/plugin-hook-bootstrap.js');process.env.CLAUDE_PLUGIN_ROOT=r;process.argv.splice(1,0,s);require(s)\" node scripts/hooks/run-with-flags.js post:ecc-metrics-bridge scripts/hooks/ecc-metrics-bridge.js minimal,standard,strict",
-            "timeout": 10
+            "timeout": 10,
+            "async": true
           }
         ]
       },
