@@ -80,7 +80,7 @@ Este repositório contém apenas o código. Os guias explicam tudo.
 
 ## O Que Há de Novo
 
-### v2.0.0-rc.4 — Limpeza do hooks.json para o schema do Claude Code (Set 2026)
+### v2.0.0-rc.5 — Limpeza do hooks.json para o schema do Claude Code (Set 2026)
 
 ### v2.0.0-rc.3 — Atualização de pinos MCP e sincronização de skills upstream (Set 2026)
 

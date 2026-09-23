@@ -80,7 +80,7 @@
 
 ## 最新动态
 
-### v2.0.0-rc.4 — hooks.json 适配 Claude Code schema 清理（2026年9月）
+### v2.0.0-rc.5 — hooks.json 适配 Claude Code schema 清理（2026年9月）
 
 ### v2.0.0-rc.3 — MCP 版本刷新与上游 skills 同步（2026年9月）
 
