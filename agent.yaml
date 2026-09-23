@@ -1,6 +1,6 @@
 spec_version: "0.1.0"
 name: everything-claude-code
-version: 2.0.0-rc.1
+version: 2.0.0-rc.3
 description: "Initial gitagent export surface for ECC's shared skill catalog, governance, and identity. Native agents, commands, and hooks remain authoritative in the repository while manifest coverage expands."
 author: affaan-m
 license: MIT
@@ -68,7 +68,6 @@ skills:
   - docker-patterns
   - documentation-lookup
   - e2e-testing
-  - ecc-guide
   - enterprise-agent-ops
   - error-handling
   - eval-harness
@@ -119,7 +118,6 @@ skills:
   - market-research
   - mcp-server-patterns
   - mle-workflow
-  - motion-ui
   - mp-caveman
   - mp-diagnose
   - mp-grill-me
@@ -169,7 +167,6 @@ skills:
   - search-first
   - security-bounty-hunter
   - security-review
-  - security-scan
   - social-graph-ranker
   - springboot-patterns
   - springboot-security

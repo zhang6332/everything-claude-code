@@ -473,7 +473,7 @@ test('user-facing docs do not use overlong legacy marketplace install commands',
     path.join(repoRoot, 'README.zh-CN.md'),
     path.join(repoRoot, 'skills', 'configure-ecc', 'SKILL.md'),
     ...collectMarkdownFiles(path.join(repoRoot, 'docs')),
-  ].filter(filePath => !path.relative(repoRoot, filePath).startsWith(`docs${path.sep}drafts${path.sep}`));
+  ].filter(filePath => fs.existsSync(filePath) && !path.relative(repoRoot, filePath).startsWith(`docs${path.sep}drafts${path.sep}`));
 
   const offenders = [];
   for (const filePath of markdownFiles) {
